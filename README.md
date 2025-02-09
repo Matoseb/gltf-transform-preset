@@ -1,8 +1,9 @@
-# Installation
+## Installation
 
 ```bash
 pnpm install
 ```
+## Usage
 
 ```bash
 node swiju.js
