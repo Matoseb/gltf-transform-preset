@@ -23,13 +23,18 @@ export function removeLights(options) {
   };
 }
 
-export function handlePin({ name = "pin" } = {}) {
+export function handlePin({ name = "pin", remove = false } = {}) {
   return (document) => {
     document
       .getRoot()
       .listNodes()
       .forEach((node) => {
         if (!node.getName().includes(name)) return;
+        if(remove) {
+          node.dispose();
+          console.log("Removed pin");
+          return;
+        }
         const mesh = node.getMesh();
         if (!mesh) return;
         mesh.dispose();
