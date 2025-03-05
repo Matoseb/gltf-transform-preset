@@ -23,6 +23,17 @@ export function removeLights(options) {
   };
 }
 
+export function removeTextures() {
+  return (document) => {
+    document
+      .getRoot()
+      .listTextures()
+      .forEach((texture) => {
+        texture.dispose();
+      });
+  };
+}
+
 export function handlePin({ name = "pin", remove = false } = {}) {
   return (document) => {
     document
@@ -30,7 +41,7 @@ export function handlePin({ name = "pin", remove = false } = {}) {
       .listNodes()
       .forEach((node) => {
         if (!node.getName().includes(name)) return;
-        if(remove) {
+        if (remove) {
           node.dispose();
           console.log("Removed pin");
           return;
